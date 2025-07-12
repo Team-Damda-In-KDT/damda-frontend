@@ -1,3 +1,38 @@
+# 프로젝트 이름
+
+## 작성자
+Justin. S. Hong
+
+Next.js 기반 풀스택 프론트엔드 프로젝트 🎉
+
+## 🛠️ 기술 스택
+
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript
+- **State**: Zustand
+- **Data Fetching**: TanStack Query
+- **Styling**: Tailwind CSS, shadcn/ui
+- **Auth/DB**: Supabase
+- **API**: Axios wrapper
+
+## 📁 프로젝트 구조
+src/
+app/ # App Router 라우팅
+components/ # UI 컴포넌트
+lib/ # 라이브러리/클라이언트
+store/ # 상태관리 (Zustand)
+styles/ # 전역 CSS
+
+## 📦 설치 및 실행
+
+```bash
+git clone https://github.com/Team-Damda-In-KDT/damda-frontend.git
+cd damda-frontend
+npm install
+npm run dev
+```
+
+## Introduce Project
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
