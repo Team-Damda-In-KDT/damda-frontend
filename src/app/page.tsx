@@ -19,9 +19,14 @@ import {
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { toast } from 'sonner';
 
+type PingTestRow = {
+  id: number;
+  message: string;
+};
+
 export default function Home() {
   const [dbStatus, setDbStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<PingTestRow[] | string | null>(null);
   const [apiCheck, setApiCheck] = useState<string | null>(null);
   const user = useAuthStore((state) => state.user);
   const setUser = useAuthStore((state) => state.setUser);

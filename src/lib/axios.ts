@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
 export const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || '', // 예: Supabase REST API 등
@@ -14,8 +14,10 @@ const handleRequest = async <T>(
     try {
         const response = await request;
         return response.data;
-    } catch (error: any) {
-        console.error('[API ERROR]', error?.response?.data || error.message);
+    } catch (error: unknown) {
+        const err = error as AxiosError;
+
+        console.error('[API ERROR]', err.response?.data || err.message);
         return null;
     }
 };
@@ -25,13 +27,13 @@ export const apiClient = {
     get: <T>(url: string, config?: AxiosRequestConfig) =>
         handleRequest<T>(api.get(url, config)),
 
-    post: <T>(url: string, data?: any, config?: AxiosRequestConfig) =>
+    post: <T>(url: string, data?: unknown, config?: AxiosRequestConfig) =>
         handleRequest<T>(api.post(url, data, config)),
 
-    put: <T>(url: string, data?: any, config?: AxiosRequestConfig) =>
+    put: <T>(url: string, data?: unknown, config?: AxiosRequestConfig) =>
         handleRequest<T>(api.put(url, data, config)),
 
-    patch: <T>(url: string, data?: any, config?: AxiosRequestConfig) =>
+    patch: <T>(url: string, data?: unknown, config?: AxiosRequestConfig) =>
         handleRequest<T>(api.patch(url, data, config)),
 
     delete: <T>(url: string, config?: AxiosRequestConfig) =>
